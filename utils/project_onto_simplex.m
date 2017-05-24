@@ -12,5 +12,6 @@ function x = project_onto_simplex(v, B)
 u = sort(v, 'descend');
 sv = cumsum(u);
 rho = find(u > (sv - B) ./ (1:length(v))', 1, 'last');
-theta = max(0, (sv(rho) - B) / rho);
+%theta = max(0, (sv(rho) - B) / rho);
+theta = (sv(rho) - B) / rho;
 x = max(v - theta, 0);
